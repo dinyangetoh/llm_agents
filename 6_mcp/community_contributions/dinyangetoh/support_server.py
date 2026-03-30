@@ -57,7 +57,8 @@ async def get_ticket_thread(ticket_id: str) -> str:
 async def append_ticket_message(ticket_id: str, role: str, body: str) -> str:
     """Append a message to the ticket thread. Allowed even when the ticket is resolved.
 
-    Roles: customer, agent, system. Log the customer-facing reply with role agent before close_ticket.
+    Roles: customer, agent, system. Log each inbound customer turn with role customer once you know
+    the ticket id (including follow-ups). Log the outbound reply with role agent before close_ticket.
 
     Args:
         ticket_id: The ticket to attach the message to
